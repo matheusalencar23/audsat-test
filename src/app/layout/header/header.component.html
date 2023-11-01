@@ -1,1 +1,18 @@
-<p>header works!</p>
+<header>
+  <a [routerLink]="['/home']">
+    <h1><img src="./assets/audsat-logo.svg" alt="" /></h1>
+  </a>
+  <nav>
+    <ul>
+      <li>
+        <a [routerLink]="['/home']" routerLinkActive="active-link">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="['/users']" routerLinkActive="active-link">Usuários</a>
+      </li>
+      <li>
+        <a [routerLink]="['/logs']" routerLinkActive="active-link">Logs</a>
+      </li>
+    </ul>
+  </nav>
+</header>
