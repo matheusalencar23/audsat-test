@@ -1,0 +1,13 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h3 {
+    a {
+      color: #000;
+    }
+  }
+}
