@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { PageEvent } from '@angular/material/paginator';
+import { Observable, map } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -18,9 +19,26 @@ export class UsersComponent implements OnInit {
     'actions',
   ];
 
+  length = 10;
+  pageSize = 10;
+  pageIndex = 0;
+
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.users = this.userService.getAllUsers();
+    this.getAllUsers();
+  }
+
+  handlePageEvent(e: PageEvent) {
+    console.log(e);
+    this.length = e.length;
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+
+    this.getAllUsers();
+  }
+
+  getAllUsers(): void {
+    this.users = this.userService.getAllUsers(this.pageIndex, this.pageSize);
   }
 }
