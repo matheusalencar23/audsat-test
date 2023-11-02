@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { LoadingScreenModule } from './components/loading-screen/loading-screen.module';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     LoadingScreenModule,
+    MatSnackBarModule,
   ],
   providers: [
     {
