@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Observable, map } from 'rxjs';
 import { User } from 'src/app/models/user';
+import { UserFilter } from 'src/app/models/user-filter';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -20,8 +21,9 @@ export class UsersComponent implements OnInit {
   ];
 
   length = 10;
-  pageSize = 10;
+  pageSize = 5;
   pageIndex = 0;
+  filter: UserFilter = {};
 
   constructor(private userService: UserService) {}
 
@@ -30,7 +32,6 @@ export class UsersComponent implements OnInit {
   }
 
   handlePageEvent(e: PageEvent) {
-    console.log(e);
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
@@ -38,7 +39,20 @@ export class UsersComponent implements OnInit {
     this.getAllUsers();
   }
 
+  search(filter: UserFilter): void {
+    if (JSON.stringify(this.filter) !== JSON.stringify(filter)) {
+      this.filter = filter;
+      this.pageSize = 5;
+      this.pageIndex = 0;
+      this.getAllUsers();
+    }
+  }
+
   getAllUsers(): void {
-    this.users = this.userService.getAllUsers(this.pageIndex, this.pageSize);
+    this.users = this.userService.getAllUsers(
+      this.pageIndex,
+      this.pageSize,
+      this.filter
+    );
   }
 }

@@ -7,6 +7,7 @@ import { UsersComponent } from './users.component';
 import { PageTitleModule } from 'src/app/components/page-title/page-title.module';
 import { ButtonModule } from 'src/app/components/button/button.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { UserFilterModule } from 'src/app/components/user-filter/user-filter.module';
 
 @NgModule({
   declarations: [UsersComponent],
@@ -18,6 +19,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     ButtonModule,
     MatPaginatorModule,
+    UserFilterModule,
   ],
 })
 export class UsersModule {}
