@@ -11,7 +11,6 @@ export class LoadingService {
   constructor() {}
 
   start(): void {
-    console.log('start');
     this._loading.next(true);
   }
 

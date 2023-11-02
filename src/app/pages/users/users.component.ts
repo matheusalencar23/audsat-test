@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-  users: Observable<User[]> = new Observable();
+  users$: Observable<User[]> = new Observable();
   displayedColumns: string[] = [
     'name',
     'username',
@@ -49,7 +49,7 @@ export class UsersComponent implements OnInit {
   }
 
   getAllUsers(): void {
-    this.users = this.userService.getAllUsers(
+    this.users$ = this.userService.getAllUsers(
       this.pageIndex,
       this.pageSize,
       this.filter

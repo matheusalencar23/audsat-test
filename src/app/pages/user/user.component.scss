@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  padding: 2rem 1rem;
+  flex-direction: column;
+  height: 100%;
+
+  .user {
+    height: 100%;
+
+    &__content {
+      display: flex;
+      gap: 1rem;
+      flex-direction: row;
+      flex: 1;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
+
+    &__data {
+      flex: 1;
+    }
+
+    &__posts {
+      flex: 2;
+    }
+  }
+}
