@@ -1,0 +1,13 @@
+button {
+  background-color: #007839;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: darken(#007839, 6%);
+  }
+}
