@@ -1,9 +1,10 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { Comment } from 'src/app/models/comment';
 import { Post } from 'src/app/models/post';
-import { CommentService } from 'src/app/services/comment.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-user-posts-card',
@@ -42,7 +43,10 @@ export class UserPostsCardComponent {
 
   @Input({ required: true }) posts: Post[] = [];
 
-  constructor(private commentService: CommentService) {}
+  constructor(
+    private postService: PostService,
+    private snackBar: MatSnackBar
+  ) {}
 
   selectPost(id: number): void {
     if (this.activePost === id) {
@@ -50,7 +54,29 @@ export class UserPostsCardComponent {
       this.commets$ = new Observable();
     } else {
       this.activePost = id;
-      this.commets$ = this.commentService.getCommentsByPost(this.activePost);
+      this.commets$ = this.postService.getCommentsByPost(this.activePost);
     }
+  }
+
+  deletePost(event: Event, id: number): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.postService.deletePost(id).subscribe({
+      next: () => {
+        this.snackBar.open('Post excluído com sucesso', '', {
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+          panelClass: 'snackbar-success',
+        });
+      },
+      error: () => {
+        this.snackBar.open('Ocorreu algum problema ao excluir o post', '', {
+          horizontalPosition: 'start',
+          verticalPosition: 'bottom',
+          panelClass: 'snackbar-error',
+        });
+      },
+    });
   }
 }

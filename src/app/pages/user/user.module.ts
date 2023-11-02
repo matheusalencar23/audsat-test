@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { PageTitleModule } from 'src/app/components/page-title/page-title.module';
@@ -16,6 +18,8 @@ import { ButtonModule } from 'src/app/components/button/button.module';
     PageTitleModule,
     MatCardModule,
     ButtonModule,
+    MatIconModule,
+    MatSnackBarModule,
   ],
 })
 export class UserModule {}

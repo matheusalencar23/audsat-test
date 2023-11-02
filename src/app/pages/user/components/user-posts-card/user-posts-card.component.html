@@ -5,6 +5,13 @@
     (click)="selectPost(post.id)"
     [class.active]="post.id === activePost"
   >
+    <app-button
+      class="post__exclude-button"
+      *ngIf="post.id === activePost"
+      (click)="deletePost($event, post.id)"
+    >
+      <mat-icon fontIcon="delete" />
+    </app-button>
     <h4>{{ post.title }}</h4>
     <p>{{ post.body }}</p>
     <ng-container

@@ -4,6 +4,13 @@ mat-card {
     border-bottom: 1px solid #000;
     transition: 0.2s;
     cursor: pointer;
+    position: relative;
+
+    &__exclude-button {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+    }
 
     h4 {
       font-weight: 500;
