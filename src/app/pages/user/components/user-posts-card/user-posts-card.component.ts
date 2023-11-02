@@ -1,7 +1,9 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { Comment } from 'src/app/models/comment';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/post.service';
@@ -46,7 +48,7 @@ export class UserPostsCardComponent {
 
   constructor(
     private postService: PostService,
-
+    public dialog: MatDialog,
     private snackbarService: SnackbarService
   ) {}
 
@@ -64,16 +66,27 @@ export class UserPostsCardComponent {
     event.preventDefault();
     event.stopPropagation();
 
-    this.postService.deletePost(id).subscribe({
-      next: () => {
-        this.snackbarService.open('Post excluído com sucesso', 'success');
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        message: 'Tem certeza que deseja deletar esse post?',
+        confirm: false,
       },
-      error: () => {
-        this.snackbarService.open(
-          'Ocorreu algum problema ao excluir o post',
-          'error'
-        );
-      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.postService.deletePost(id).subscribe({
+          next: () => {
+            this.snackbarService.open('Post excluído com sucesso', 'success');
+          },
+          error: () => {
+            this.snackbarService.open(
+              'Ocorreu algum problema ao excluir o post',
+              'error'
+            );
+          },
+        });
+      }
     });
   }
 }

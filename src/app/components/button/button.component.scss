@@ -6,6 +6,9 @@ button {
   padding: 0.5rem;
   border-radius: 0.25rem;
   transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: darken(#007839, 6%);
