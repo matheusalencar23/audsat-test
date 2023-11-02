@@ -1,0 +1,11 @@
+<mat-card *ngIf="posts?.length">
+  <div
+    *ngFor="let post of posts"
+    class="post"
+    (click)="selectPost(post.id)"
+    [class.active]="post.id === activePost"
+  >
+    <p>{{ post.title }}</p>
+    <p>{{ post.body }}</p>
+  </div>
+</mat-card>

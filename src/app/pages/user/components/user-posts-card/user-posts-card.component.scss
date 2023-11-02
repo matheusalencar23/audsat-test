@@ -1,0 +1,23 @@
+mat-card {
+  .post {
+    padding: 1rem;
+    border-bottom: 1px solid #000;
+    transition: 0.2s;
+
+    &:first-child {
+      padding-top: 1.5rem;
+    }
+
+    &:last-child {
+      padding-bottom: 1.5rem;
+    }
+
+    &:hover {
+      background-color: darken(#fff, 10%);
+    }
+
+    &.active {
+      background-color: darken(#fff, 20%);
+    }
+  }
+}
