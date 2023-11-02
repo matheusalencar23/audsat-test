@@ -1,4 +1,5 @@
 export interface Log {
+  id?: any;
   action: string;
   path: string;
   userAgent: string;

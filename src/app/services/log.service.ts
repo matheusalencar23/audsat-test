@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
@@ -13,8 +13,11 @@ export class LogService {
 
   constructor(private http: HttpClient) {}
 
-  getLogs(): Observable<any> {
-    return this.http.get<any>(this.url);
+  getLogs(page: number, limit: number): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('_page', page);
+    params = params.append('_limit', limit);
+    return this.http.get<any>(this.url, { params });
   }
 
   log(action: string): void {

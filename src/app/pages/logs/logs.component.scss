@@ -2,3 +2,49 @@
   display: block;
   padding: 2rem 1rem;
 }
+
+.log {
+  &__header {
+    width: calc(100% - 1rem);
+    display: flex;
+
+    span {
+      flex: 1;
+      border-right: 1px solid black;
+      width: calc(100% / 5);
+      padding-left: 0.25rem;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  &__content {
+    height: calc(100vh - 15rem);
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__item-detail {
+    height: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: calc(100% / 5);
+  }
+
+  &__item-alternate {
+    background: rgba(127, 127, 127, 0.3);
+  }
+}

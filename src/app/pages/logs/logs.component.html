@@ -1,1 +1,40 @@
 <app-page-title>Logs</app-page-title>
+
+<div class="log__header">
+  <span>Data</span>
+  <span>Action</span>
+  <span>Path</span>
+  <span>BrowserData</span>
+  <span>Lat/Long</span>
+</div>
+
+<div
+  infiniteScroll
+  (scrolled)="onScroll()"
+  (scrolledUp)="onScroll()"
+  [scrollWindow]="false"
+  class="log__content"
+>
+  <div
+    *ngFor="let log of logs; let odd = odd"
+    [class.log__item-alternate]="odd"
+    class="log__row"
+  >
+    <span
+      class="log__item-detail"
+      [title]="log.date | date : 'dd/MM/yyyy hh:mm:ss'"
+    >
+      {{ log.date | date : "dd/MM/yyyy hh:mm:ss" }}
+    </span>
+    <span class="log__item-detail" [title]="log.action">
+      {{ log.action }}
+    </span>
+    <span class="log__item-detail" [title]="log.path">{{ log.path }}</span>
+    <span class="log__item-detail" [title]="log.userAgent">
+      {{ log.userAgent }}
+    </span>
+    <span class="log__item-detail" [title]="log.lat + '/' + log.long">
+      {{ log.lat }}/{{ log.long }}
+    </span>
+  </div>
+</div>
