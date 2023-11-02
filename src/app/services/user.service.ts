@@ -4,7 +4,6 @@ import { environment } from 'src/environments/environment.development';
 import { User } from '../models/user';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { UserFilter } from '../models/user-filter';
-import { Post } from '../models/post';
 
 @Injectable({
   providedIn: 'root',
@@ -28,10 +27,6 @@ export class UserService {
         return [...users].splice(pageIndex * pageSize, pageSize);
       })
     );
-  }
-
-  getPostsByUser(id: number): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.apiUrl}/${id}/posts`);
   }
 
   getUserById(id: number): Observable<User> {

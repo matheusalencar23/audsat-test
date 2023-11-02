@@ -20,10 +20,21 @@
 
     &__data {
       flex: 1;
+
+      @media (max-width: 768px) {
+        flex: 0;
+      }
     }
 
     &__posts {
       flex: 2;
+      max-height: calc(100vh - 10rem);
+      overflow: auto;
+
+      @media (max-width: 768px) {
+        flex: 1;
+        max-height: calc(100vh - 25rem);
+      }
     }
   }
 }

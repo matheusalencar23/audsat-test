@@ -5,7 +5,16 @@
     (click)="selectPost(post.id)"
     [class.active]="post.id === activePost"
   >
-    <p>{{ post.title }}</p>
+    <h4>{{ post.title }}</h4>
     <p>{{ post.body }}</p>
+    <ng-container
+      *ngIf="post.id === activePost && (commets$ | async) as comments"
+    >
+      <div *ngFor="let comment of comments" class="comment" @dropdownComments>
+        <h5>{{ comment.name }}</h5>
+        <span>{{ comment.email }}</span>
+        <p>{{ comment.body }}</p>
+      </div>
+    </ng-container>
   </div>
 </mat-card>
