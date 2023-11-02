@@ -7,10 +7,12 @@ import { UsersComponent } from './users.component';
 import { PageTitleModule } from 'src/app/components/page-title/page-title.module';
 import { ButtonModule } from 'src/app/components/button/button.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { UserFilterModule } from 'src/app/components/user-filter/user-filter.module';
+import { UserFilterComponent } from './components/user-filter/user-filter.component';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [UsersComponent],
+  declarations: [UsersComponent, UserFilterComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
@@ -19,7 +21,8 @@ import { UserFilterModule } from 'src/app/components/user-filter/user-filter.mod
     MatIconModule,
     ButtonModule,
     MatPaginatorModule,
-    UserFilterModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
 })
 export class UsersModule {}
