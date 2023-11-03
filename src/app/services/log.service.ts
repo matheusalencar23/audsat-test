@@ -33,7 +33,6 @@ export class LogService {
     this.getGeolocation(log)
       .pipe(
         switchMap((newLog) => {
-          console.log(newLog);
           return this.http.post(this.url, newLog);
         })
       )

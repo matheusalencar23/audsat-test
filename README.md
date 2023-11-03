@@ -20,7 +20,7 @@ Para executar o projeto localmente é necessário executar o comando `npm run se
 
 ## Deploy
 
-Para executar o deploy local da aplicação é necessário executar o comando `npm run deploy`, esse comando vai executar o build da aplicação Angular na pasta `./dist` e realizar o deploy usando [http-server] em http://localhost:4200 e o servidor de logs em http://localhost:3000.
+Para executar o deploy local da aplicação é necessário executar o comando `npm run deploy`, esse comando vai executar o build da aplicação Angular na pasta `./dist` e realizar o deploy usando [http-server] em http://localhost:3001 e o servidor de logs em http://localhost:3000. A aplicação será aberta automaticamente.
 
 ## Testes
 

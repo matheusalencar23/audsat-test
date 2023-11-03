@@ -18,19 +18,22 @@ export class LoadingInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    this.requestCount++;
+    if (!request.url.endsWith('/log')) {
+      this.requestCount++;
 
-    if (this.requestCount) {
-      this.loadingService.start();
+      if (this.requestCount) {
+        this.loadingService.start();
+      }
+
+      return next.handle(request).pipe(
+        finalize(() => {
+          this.requestCount--;
+          if (!this.requestCount) {
+            this.loadingService.stop();
+          }
+        })
+      );
     }
-
-    return next.handle(request).pipe(
-      finalize(() => {
-        this.requestCount--;
-        if (!this.requestCount) {
-          this.loadingService.stop();
-        }
-      })
-    );
+    return next.handle(request);
   }
 }
