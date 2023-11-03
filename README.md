@@ -1,27 +1,29 @@
 # AudsatTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+Projeto inicializado usando o [Angular CLI](https://github.com/angular/angular-cli) versão 16.2.1.
 
-## Development server
+Para registro de logs foi usado a ferramenta [json-server](https://www.npmjs.com/package/json-server/v/0.17.4) versão 0.17.4.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para um simples deploy da aplicação foi usado a ferramenta [http-server](https://www.npmjs.com/package/http-server/v/14.1.1) versão 14.1.1;
 
-## Code scaffolding
+## Iniciando
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+O projeto está disponível em [GitHub](https://github.com/matheusalencar23/audsat-test).
 
-## Build
+Para baixar use o comando `git clone git@github.com:matheusalencar23/audsat-test.git`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Ao baixar o projeto execute o comando `npm install` na pasta raiz do projeto.
 
-## Running unit tests
+## Ambiente de desenvolvimento
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para executar o projeto localmente é necessário executar o comando `npm run serve`, esse comando vai executar a aplicação Angular em http://localhost:4200 e o servidor de logs em http://localhost:3000.
 
-## Running end-to-end tests
+## Deploy
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Para executar o deploy local da aplicação é necessário executar o comando `npm run deploy`, esse comando vai executar o build da aplicação Angular na pasta `./dist` e realizar o deploy usando [http-server] em http://localhost:4200 e o servidor de logs em http://localhost:3000.
 
-## Further help
+## Testes
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Para executar os testes unitários usando Karma e Jasmine execute o comando `npm run test`.
+
+Executando o comando `npm run test:coverage` será gerado um relatório detalhado dos testes na pasta `./coverage`;

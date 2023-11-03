@@ -10,7 +10,9 @@
     "server:log": "wait-on ./db.json && ./node_modules/.bin/json-server --watch db.json --port 3000",
     "server:app": "wait-on ./dist/audsat-test/index.html && ./node_modules/.bin/http-server ./dist/audsat-test --port 3001 -o",
     "serve": "npm run init:db && run-p start server:log",
-    "deploy": "npm run clean && npm run init:db && npm run build:app && run-p server:log server:app"
+    "deploy": "npm run clean && npm run init:db && npm run build:app && run-p server:log server:app",
+    "test": "ng test",
+    "test:coverage": "ng test --watch=false --source-map=true --code-coverage=true --browsers ChromeHeadless"
   },
   "private": true,
   "dependencies": {
