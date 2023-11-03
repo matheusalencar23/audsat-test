@@ -18,7 +18,7 @@ export class LoadingInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (!request.url.endsWith('/log')) {
+    if (!request.url.endsWith('/log') && request.method !== 'POST') {
       this.requestCount++;
 
       if (this.requestCount) {
