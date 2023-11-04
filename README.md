@@ -27,3 +27,7 @@ Para executar o deploy local da aplicação é necessário executar o comando `n
 Para executar os testes unitários usando Karma e Jasmine execute o comando `npm run test`.
 
 Executando o comando `npm run test:coverage` será gerado um relatório detalhado dos testes na pasta `./coverage`;
+
+## Principais desafios
+
+Faltou tempo para implementação de mais testes e revisar os recursos implementados.
