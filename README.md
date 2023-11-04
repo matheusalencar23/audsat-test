@@ -27,3 +27,9 @@ Para executar o deploy local da aplicação é necessário executar o comando `n
 Para executar os testes unitários usando Karma e Jasmine execute o comando `npm run test`.
 
 Executando o comando `npm run test:coverage` será gerado um relatório detalhado dos testes na pasta `./coverage`;
+
+## Docker
+
+Com o docker disponível é possível gerar uma imagem com o comando `sudo docker build -t matheusalencar/audsat-test:1.0 .` na raiz do projeto.
+
+Com a imagem gerada execute o comando `sudo docker run -p 3000:3000 -p 3001:3001 -d matheusalencar/audsat-test:1.0` para disponibilizar a aplicação em http://localhost:3001 em um servidor [nginx](https://www.nginx.com/).
