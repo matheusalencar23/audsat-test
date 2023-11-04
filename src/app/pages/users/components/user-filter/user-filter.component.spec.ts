@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('UserFilterComponent', () => {
+describe(UserFilterComponent.name, () => {
   let component: UserFilterComponent;
   let fixture: ComponentFixture<UserFilterComponent>;
 
@@ -29,5 +29,23 @@ describe('UserFilterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit void object when call onSearch without values in the form', () => {
+    spyOn(component.search, 'emit');
+
+    component.onSearch();
+
+    expect(component.search.emit).toHaveBeenCalledWith({});
+  });
+
+  it('should emit values when call onSearch with values in the form', () => {
+    spyOn(component.search, 'emit');
+
+    component.filter.get('name')?.setValue('NOME');
+
+    component.onSearch();
+
+    expect(component.search.emit).toHaveBeenCalledWith({ name: 'NOME' });
   });
 });
